@@ -1,0 +1,167 @@
+# This list is the gentoo equivlent of ALL packages found in arch-packages/*
+# The order is preserved as well as what dir each section is from.
+
+# illogical-impulse-agsv1-git
+gnome-base/gvfs
+dev-libs/gjs
+dev-libs/glib
+sys-libs/glibc
+gui-libs/gtk
+gui-libs/gtk-layer-shell
+media-libs/libpulse
+sys-libs/pam
+net-wireless/gnome-bluetooth
+x11-misc/gammastep
+## Optional deps
+gui-libs/greetd # greetd: required for greetd service'
+dev-libs/libdbusmenu # +gtk3   # libdbusmenu-gtk3: required for systemtray service'
+net-libs/libsoup # libsoup3: required for the Utils.fetch feature'
+x11-libs/libnotify # libnotify: required for sending notifications'
+net-misc/networkmanager # networkmanager: required for network service'
+sys-power/power-profiles-daemon # power-profiles-daemon: required for powerprofiles service'
+sys-power/upower # upower: required for battery service'
+
+# illogical-impulse-audio
+media-sound/pavucontrol
+media-video/wireplumber
+dev-libs/libdbusmenu # +gtk3
+media-sound/playerctl
+gui-apps/swww::guru
+
+# illogical-impulse-backlight
+app-misc/brightnessctl::guru
+app-misc/ddcutil
+
+# illogical-impulse-basic
+net-misc/axel
+sys-devel/bc
+sys-apps/coreutils
+app-misc/cliphist::guru
+dev-build/cmake
+net-misc/curl
+gui-apps/fuzzel::guru
+net-misc/rsync
+net-misc/wget
+sys-apps/ripgrep
+app-misc/jq
+net-libs/nodejs # +npm
+dev-build/meson
+dev-lang/typescript
+dev-libs/gjs
+x11-misc/xdg-user-dirs
+
+# illogical-impulse-bibata-modern-classic-bin
+x11-themes/bibata-xcursors::guru
+
+# illogical-impulse-fonts-themes
+x11-themes/adw-gtk3
+x11-misc/qt5ct
+gui-apps/qt6ct
+dev-qt/qtwayland
+media-libs/fontconfig
+# media-fonts/readexpro::local
+# media-fonts/jetbrains-mono-nerd::local
+# media-fonts/material-design-icons::local
+# media-fonts/space-mono-nerd::local
+# media-fonts/rubik::local
+# media-fonts/gabarito::local
+# app-shells/fish # Optional
+gui-apps/foot
+# app-shells/starship # Optional
+x11-themes/kvantum # +qt5
+
+# illogical-impulse-gnome
+gnome-extra/polkit-gnome
+gnome-base/gnome-keyring
+gnome-base/gnome-control-center
+net-misc/networkmanager
+
+# illogical-impulse-gtk
+gui-libs/gdk-pixbuf-loader-webp
+gui-libs/gtk-layer-shell
+gui-libs/gtk
+x11-libs/gtksourceview
+dev-libs/gobject-introspection
+sys-power/upower
+gnome-extra/yad::guru
+x11-misc/ydotool
+x11-misc/xdg-user-dirs-gtk
+
+# illogical-impulse-hyprland
+gui-libs/hyprutils
+gui-apps/hyprpicker::guru
+dev-libs/hyprlang
+gui-apps/hypridle::guru
+gui-libs/hyprland-qt-support
+gui-libs/hyprland-qtutils
+gui-apps/hyprlock::guru
+gui-libs/xdg-desktop-portal-hyprland::guru
+gui-libs/hyprcursor
+dev-util/hyprwayland-scanner
+gui-wm/hyprland
+
+# illogical-impulse-microtex-git
+# deps for microtex compile
+dev-libs/tinyxml2
+dev-cpp/gtkmm
+dev-cpp/gtksourceviewmm
+dev-cpp/cairomm
+
+# illogical-impulse-oneui4-icons-git
+# x11-themes/oneui4-icons::local # note we want the fork by end-4, not the upstream.
+
+# illogical-impulse-portal
+sys-apps/xdg-desktop-portal
+sys-apps/xdg-desktop-portal-gtk
+gui-libs/xdg-desktop-portal-hyprland::guru
+
+# illogical-impulse-python
+llvm-core/clang
+# dev-python/uv # not needed as we're not using the install script
+gui-libs/gtk
+gui-libs/libadwaita
+net-libs/libsoup
+dev-libs/libportal # +gtk
+dev-libs/gobject-introspection
+dev-python/libsass
+#
+## deps that the manual-install script, installs
+dev-python/build
+dev-python/cffi
+dev-python/libsass
+dev-python/material-color-utilities::guru
+dev-python/materialyoucolor::cuzz
+dev-python/numpy
+dev-python/packaging
+dev-python/pillow
+dev-python/psutil
+dev-python/pycparser
+dev-python/pyproject-hooks
+dev-python/pywayland
+dev-python/setproctitle
+dev-python/setuptools
+dev-python/setuptools-scm
+dev-python/wheel
+
+
+# illogical-impulse-screencapture
+gui-apps/swappy
+gui-apps/wf-recorder
+gui-apps/grim
+app-text/tesseract 
+# https://packages.gentoo.org/useflags/l10n_en
+# Go to the link and l10n values to your USE var in your make.conf
+# For English that would be: l10n_en
+gui-apps/slurp
+
+
+# illogical-impulse-widgets
+dev-util/dart-sass::xoores
+gui-apps/hypridle::guru
+gui-libs/hyprutils
+gui-apps/hyprlock
+gui-apps/wlogout
+gui-apps/wl-clipboard
+gui-apps/hyprpicker
+gnome-extra/nm-applet # supplies nm-connection-editor
+# need to supply a better-control .ebuild
