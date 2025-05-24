@@ -1,5 +1,6 @@
-# This list is the gentoo equivlent of ALL packages found in arch-packages/*
-# The order is preserved as well as what dir each section is from.
+# NOTE: This list is the gentoo equivlent of ALL packages found in arch-packages/*
+# NOTE: The order is preserved and each paragraph comment referers to the corresponding arch-packages/file
+# NOTE: Some packages are listed more than once in arch-packages/ our list does the same for continuity.
 
 # illogical-impulse-agsv1-git
 gnome-base/gvfs
@@ -59,13 +60,13 @@ x11-misc/qt5ct
 gui-apps/qt6ct
 dev-qt/qtwayland
 media-libs/fontconfig
-# media-fonts/readexpro::local
-# media-fonts/jetbrains-mono-nerd::local
-# media-fonts/material-design-icons::local
-# media-fonts/space-mono-nerd::local
-# media-fonts/rubik::local
-# media-fonts/gabarito::local
-# app-shells/fish # Optional
+# media-fonts/readexpro             # no ebuild available
+# media-fonts/jetbrains-mono-nerd   # no ebuild available
+# media-fonts/material-design-icons # no ebuild available
+# media-fonts/space-mono-nerd       # no ebuild available
+# media-fonts/rubik                 # no ebuild available
+# media-fonts/gabarito              # no ebuild available
+# app-shells/fish     # Optional
 gui-apps/foot
 # app-shells/starship # Optional
 x11-themes/kvantum # +qt5
@@ -108,7 +109,7 @@ dev-cpp/gtksourceviewmm
 dev-cpp/cairomm
 
 # illogical-impulse-oneui4-icons-git
-# x11-themes/oneui4-icons::local # note we want the fork by end-4, not the upstream.
+# x11-themes/oneui4-icons # no ebuild available # note we want the fork by end-4, not the upstream.
 
 # illogical-impulse-portal
 sys-apps/xdg-desktop-portal
@@ -117,31 +118,30 @@ gui-libs/xdg-desktop-portal-hyprland::guru
 
 # illogical-impulse-python
 llvm-core/clang
-# dev-python/uv # not needed as we're not using the install script
+dev-python/uv
 gui-libs/gtk
 gui-libs/libadwaita
 net-libs/libsoup
 dev-libs/libportal # +gtk
 dev-libs/gobject-introspection
 dev-python/libsass
-#
-## deps that the manual-install script, installs
-dev-python/build
-dev-python/cffi
-dev-python/libsass
-dev-python/material-color-utilities::guru
-dev-python/materialyoucolor::cuzz
-dev-python/numpy
-dev-python/packaging
-dev-python/pillow
-dev-python/psutil
-dev-python/pycparser
-dev-python/pyproject-hooks
-dev-python/pywayland
-dev-python/setproctitle
-dev-python/setuptools
-dev-python/setuptools-scm
-dev-python/wheel
+## deps that the 'manual-install' script installs
+# dev-python/build
+# dev-python/cffi
+# dev-python/libsass
+# dev-python/material-color-utilities::guru
+# dev-python/materialyoucolor::cuzz
+# dev-python/numpy
+# dev-python/packaging
+# dev-python/pillow
+# dev-python/psutil
+# dev-python/pycparser
+# dev-python/pyproject-hooks
+# dev-python/pywayland
+# dev-python/setproctitle
+# dev-python/setuptools
+# dev-python/setuptools-scm
+# dev-python/wheel
 
 
 # illogical-impulse-screencapture
@@ -165,3 +165,4 @@ gui-apps/wl-clipboard
 gui-apps/hyprpicker
 gnome-extra/nm-applet # supplies nm-connection-editor
 # need to supply a better-control .ebuild
+# some of better-control functionality (bluetooth) relies upon systemd
