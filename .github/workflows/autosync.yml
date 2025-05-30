@@ -1,0 +1,29 @@
+name: Sync upstream master
+on:
+  schedule:
+    - cron: "0 0 * * *"   # Every day at 00:00 UTC
+  workflow_dispatch:
+
+jobs:
+  sync-master:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+
+      - name: Add and fetch upstream
+        run: |
+          git remote add upstream https://github.com/end-4/dots-hyprland/
+          git fetch upstream
+
+      - name: Merge upstream/master into master
+        run: |
+          git checkout main
+          git merge --no-edit upstream/main
+          git push origin main
