@@ -15,7 +15,8 @@ sudo mv -ivu illogical-impulse /etc/portage/sets/
 sudo eselect repository enable guru xoores
 sudo emaint sync -r guru
 sudo emaint sync -r xoores
-sudo emerge --verbose --ask --autounmask-write --autounmask-continue @illogical-impulse
+# NOTE: https://wiki.gentoo.org/wiki/Portage/Help/Circular_dependencies maybe useful for resolving circular dependencies.
+sudo emerge --verbose --autounmask y --autounmask-continue --ask @illogical-impulse
 
 >&2 'printf' '\033[33mz4h\033[0m: fetching \033[4m~/.zshenv\033[0m\n'
 if ! err="$($fetch "$zshenv" '--' "$url"/.zshenv 2>&1)"; then
@@ -30,3 +31,6 @@ Refer to https://end-4.github.io/dots-hyprland-wiki/en/i-i/01setup/#post-install
 # Update process
 command rsync -av --exclude='custom/*.conf' .config/hypr ~/.config/hypr/
 command rsync -av --exclude='user_options.jsonc' .config/ags ~/.config/ags/
+
+# Check for package dependency changes. This should go in autosync.yml
+git log -p --name-status "$(git log -n1 --format=%H -- illogical-impulse)"..HEAD^ -- arch-packages
