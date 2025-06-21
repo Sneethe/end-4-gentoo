@@ -46,47 +46,24 @@ ContentPage {
             text: "Material palette"
             color: Appearance.colors.colSubtext
         }
-        Flow {
-            id: paletteFlow
-            Layout.fillWidth: true
-            spacing: 2
-            property list<var> palettes: [
+
+        ConfigSelectionArray {
+            currentValue: ConfigOptions.appearance.palette.type
+            configOptionName: "appearance.palette.type"
+            onSelected: (newValue) => {
+                ConfigLoader.setConfigValueAndSave("appearance.palette.type", newValue);
+            }
+            options: [
                 {"value": "auto", "displayName": "Auto"},
                 {"value": "scheme-content", "displayName": "Content"},
                 {"value": "scheme-expressive", "displayName": "Expressive"},
-                {"value": "scheme-fidelity", "displayName": "Fidelty"},
+                {"value": "scheme-fidelity", "displayName": "Fidelity"},
                 {"value": "scheme-fruit-salad", "displayName": "Fruit Salad"},
                 {"value": "scheme-monochrome", "displayName": "Monochrome"},
                 {"value": "scheme-neutral", "displayName": "Neutral"},
                 {"value": "scheme-rainbow", "displayName": "Rainbow"},
-                {"value": "scheme-tonal-spot", "displayName": "Tonal Spot"},
+                {"value": "scheme-tonal-spot", "displayName": "Tonal Spot"}
             ]
-
-            Repeater {
-                model: paletteFlow.palettes
-                delegate: SelectionGroupButton {
-                    id: paletteButton
-                    required property var modelData
-                    required property int index
-                    onYChanged: {
-                        if (index === 0) {
-                            paletteButton.leftmost = true
-                        } else {
-                            var prev = paletteFlow.children[index - 1]
-                            var thisIsOnNewLine = prev && prev.y !== paletteButton.y
-                            paletteButton.leftmost = thisIsOnNewLine
-                            prev.rightmost = thisIsOnNewLine
-                        }
-                    }
-                    leftmost: index === 0
-                    rightmost: index === paletteFlow.palettes.length - 1
-                    buttonText: modelData.displayName;
-                    toggled: ConfigOptions.appearance.palette.type === modelData.value
-                    onClicked: {
-                        ConfigLoader.setConfigValueAndSave("appearance.palette.type", modelData.value);
-                    }
-                }
-            }
         }
 
         // Wallpaper selection
@@ -116,7 +93,7 @@ ContentPage {
                     content: "Pick wallpaper image on your system"
                 }
                 onClicked: {
-                    Hyprland.dispatch(`exec ${Directories.wallpaperSwitchScriptPath}`)
+                    Quickshell.execDetached(`${Directories.wallpaperSwitchScriptPath}`)
                 }
                 mainContentComponent: Component {
                     RowLayout {
@@ -197,28 +174,64 @@ ContentPage {
             }
         }
 
-        ConfigSwitch {
-            text: "Transparency"
-            checked: ConfigOptions.appearance.transparency
-            onClicked: checked = !checked;
-            onCheckedChanged: {
-                ConfigLoader.setConfigValueAndSave("appearance.transparency", checked);
+        ConfigRow {
+            ConfigSwitch {
+                text: "Transparency"
+                checked: ConfigOptions.appearance.transparency
+                onCheckedChanged: {
+                    ConfigLoader.setConfigValueAndSave("appearance.transparency", checked);
+                }
+                StyledToolTip {
+                    content: "Might look ass. Unsupported."
+                }
             }
-            StyledToolTip {
-                content: "Might look ass. Unsupported."
+        }
+
+        StyledText {
+            text: "Bar"
+            color: Appearance.colors.colSubtext
+        }
+        ConfigRow {
+            uniform: true
+            ConfigSwitch {
+                text: 'Borderless'
+                checked: ConfigOptions.bar.borderless
+                onCheckedChanged: {
+                    ConfigLoader.setConfigValueAndSave("bar.borderless", checked);
+                }
+            }
+            ConfigSwitch {
+                text: 'Show background'
+                checked: ConfigOptions.bar.showBackground
+                onCheckedChanged: {
+                    ConfigLoader.setConfigValueAndSave("bar.showBackground", checked);
+                }
+                StyledToolTip {
+                    content: "Note: turning off can hurt readability"
+                }
             }
         }
     }
 
     ContentSection {
         title: "Shell windows"
+        spacing: 4
 
-        ConfigSwitch {
-            text: "Title bar"
-            checked: ConfigOptions.windows.showTitlebar
-            onClicked: checked = !checked;
-            onCheckedChanged: {
-                ConfigLoader.setConfigValueAndSave("windows.showTitlebar", checked);
+        ConfigRow {
+            uniform: true
+            ConfigSwitch {
+                text: "Title bar"
+                checked: ConfigOptions.windows.showTitlebar
+                onCheckedChanged: {
+                    ConfigLoader.setConfigValueAndSave("windows.showTitlebar", checked);
+                }
+            }
+            ConfigSwitch {
+                text: "Center title"
+                checked: ConfigOptions.windows.centerTitle
+                onCheckedChanged: {
+                    ConfigLoader.setConfigValueAndSave("windows.centerTitle", checked);
+                }
             }
         }
     }
