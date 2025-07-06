@@ -63,6 +63,7 @@ Singleton {
             }
 
             property JsonObject appearance: JsonObject {
+                property bool extraBackgroundTint: true
                 property int fakeScreenRounding: 2 // 0: None | 1: Always | 2: When not fullscreen
                 property bool transparency: false
                 property JsonObject palette: JsonObject {
@@ -123,6 +124,13 @@ Singleton {
                     property bool alwaysShowNumbers: false
                     property int showNumberDelay: 300 // milliseconds
                 }
+                property JsonObject weather: JsonObject {
+                    property bool enable: false
+                    property bool enableGPS: true // gps based location
+                    property string city: "" // When 'enableGPS' is false
+                    property bool useUSCS: false // Instead of metric (SI) units
+                    property int fetchInterval: 10 // minutes
+                }
             }
 
             property JsonObject battery: JsonObject {
@@ -134,6 +142,7 @@ Singleton {
 
             property JsonObject dock: JsonObject {
                 property bool enable: false
+                property bool monochromeIcons: true
                 property real height: 60
                 property real hoverRegionHeight: 2
                 property bool pinnedOnStartup: false
