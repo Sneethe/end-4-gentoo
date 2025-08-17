@@ -153,6 +153,9 @@ Item { // Bar content region
                 Layout.fillWidth: true
                 Layout.fillHeight: false
             }
+            
+            HorizontalBarSeparator {}
+
             VerticalMedia {
                 Layout.fillWidth: true
                 Layout.fillHeight: false
@@ -198,11 +201,25 @@ Item { // Bar content region
                 Layout.fillHeight: false
             }
 
+            HorizontalBarSeparator {}
+
+            VerticalDateWidget {
+                Layout.fillWidth: true
+                Layout.fillHeight: false
+            }
+
+            HorizontalBarSeparator {
+                visible: UPower.displayDevice.isLaptopBattery
+            }
+
             BatteryIndicator {
                 visible: UPower.displayDevice.isLaptopBattery
                 Layout.fillWidth: true
                 Layout.fillHeight: false
             }
+
+
+            
         }
     }
 
@@ -236,8 +253,6 @@ Item { // Bar content region
         onPressed: event => {
             if (event.button === Qt.LeftButton) {
                 GlobalStates.sidebarRightOpen = !GlobalStates.sidebarRightOpen;
-            } else if (event.button === Qt.RightButton) {
-                MprisController.activePlayer.next();
             }
         }
         // Scroll to change volume
