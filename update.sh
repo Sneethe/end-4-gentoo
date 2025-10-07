@@ -14,7 +14,7 @@ set -uo pipefail
 FORCE_CHECK=false
 CHECK_PACKAGES=false
 REPO_DIR="$(cd "$(dirname $0)" &>/dev/null && pwd)"
-ARCH_PACKAGES_DIR="${REPO_DIR}/arch-packages"
+ARCH_PACKAGES_DIR="${REPO_DIR}/dist-arch"
 UPDATE_IGNORE_FILE="${REPO_DIR}/.updateignore"
 HOME_UPDATE_IGNORE_FILE="${HOME}/.updateignore"
 
@@ -333,7 +333,7 @@ list_packages() {
   local changed_packages=()
 
   if [[ ! -d "$ARCH_PACKAGES_DIR" ]]; then
-    log_warning "No arch-packages directory found"
+    log_warning "No dist-arch directory found"
     return 1
   fi
 
@@ -349,7 +349,7 @@ list_packages() {
   done
 
   if [[ ${#available_packages[@]} -eq 0 ]]; then
-    log_info "No packages found in arch-packages directory"
+    log_info "No packages found in dist-arch directory"
     return 1
   fi
 
@@ -553,7 +553,10 @@ done
 
 if [[ "$check" == true ]]; then
   log_warning "THIS SCRIPT IS NOT FULLY TESTED AND MAY CAUSE ISSUES!"
-  safe_read "BY CONTINUE YOU WILL USE IT AT YOUR OWN RISK (y/N): " response "N"
+  log_warning "It might be safer if you want to preserve your modifications and not delete added files,"
+  log_warning "  but this can cause partial updates and therefore unexpected behavior like in #1856."
+  log_warning "In general, prefer install.sh for updates."
+  safe_read "Continue? (y/N): " response "N"
 
   if [[ ! "$response" =~ ^[Yy]$ ]]; then
     log_error "Update aborted by user"
@@ -632,7 +635,7 @@ if [[ "$CHECK_PACKAGES" == true ]]; then
   log_header "Package Management"
 
   if [[ ! -d "$ARCH_PACKAGES_DIR" ]]; then
-    log_warning "No arch-packages directory found. Skipping package management."
+    log_warning "No dist-arch directory found. Skipping package management."
   else
     # Check if any PKGBUILDs have changed
     changed_pkgbuilds=()
@@ -809,12 +812,6 @@ fi
 
 # Step 4: Update script permissions
 log_header "Updating Script Permissions"
-
-if [[ -d "${REPO_DIR}/scriptdata" ]]; then
-  find "${REPO_DIR}/scriptdata" -type f -name "*.sh" -exec chmod +x {} \;
-  find "${REPO_DIR}/scriptdata" -type f -executable -exec chmod +x {} \;
-  log_success "Updated script permissions"
-fi
 
 # Make sure local bin scripts are executable
 if [[ -d "${HOME}/.local/bin" ]]; then
