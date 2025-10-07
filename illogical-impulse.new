@@ -1,0 +1,142 @@
+# illogical-impulse-audio/PKGBUILD
+media-sound/cava
+media-sound/pavucontrol-qt
+media-video/wireplumber
+dev-libs/libdbusmenu
+media-sound/playerctl
+
+# illogical-impulse-backlight/PKGBUILD
+app-misc/geoclue
+app-misc/brightnessctl
+app-misc/ddcutil
+
+# illogical-impulse-basic/PKGBUILD
+net-misc/axel
+sys-devel/bc
+sys-apps/coreutils
+app-misc/cliphist
+dev-build/cmake
+net-misc/curl
+net-misc/rsync
+net-misc/wget
+sys-apps/ripgrep
+app-misc/jq
+dev-build/meson
+x11-misc/xdg-user-dirs
+
+# illogical-impulse-bibata-modern-classic-bin/PKGBUILD
+x11-themes/bibata-xcursors
+
+# illogical-impulse-fonts-themes/PKGBUILD
+x11-themes/adw-gtk3
+kde-plasma/breeze
+# https://github.com/mjkim0727/breeze-plus
+kde-misc/darkly # ebuild in nest overlay
+sys-apps/eza
+app-shells/fish
+media-libs/fontconfig
+dev-python/kde-material-you-colors # ebuild in pypi overlay
+x11-terms/kitty
+x11-misc/matugen::guru
+# https://aur.archlinux.org/packages/otf-space-grotesk
+app-shells/starship
+# media-fonts/gabarito              # no ebuild available - provided by manual-install-helper.sh
+media-fonts/nerdfonts::guru # +jetbrainsmono
+# media-fonts/material-design-icons # no ebuild available
+# media-fonts/readex-pro             # no ebuild available
+# media-fonts/rubik                 # no ebuild available - provided by manual-install-helper.sh
+media-fonts/twemoji
+
+# illogical-impulse-hyprland/PKGBUILD
+gui-apps/hypridle::guru
+gui-libs/hyprcursor
+gui-wm/hyprland
+gui-libs/hyprland-qtutils
+gui-libs/hyprland-qt-support
+dev-libs/hyprlang
+gui-apps/hyprlock::guru
+gui-apps/hyprpicker::guru
+gui-apps/hyprsunset::guru
+gui-libs/hyprutils
+dev-util/hyprwayland-scanner
+gui-libs/xdg-desktop-portal-hyprland::guru
+gui-apps/wl-clipboard
+
+# illogical-impulse-kde/PKGBUILD
+kde-plasma/bluedevil
+gnome-base/gnome-keyring
+net-misc/networkmanager
+kde-plasma/plasma-nm
+kde-plasma/polkit-kde-agent
+kde-apps/dolphin
+kde-plasma/systemsettings
+
+# illogical-impulse-microtex-git/PKGBUILD
+# MicroTeX - provided by manual-install-helper.sh
+# deps for microtex compile
+dev-libs/tinyxml2
+dev-cpp/gtkmm
+dev-cpp/gtksourceviewmm
+dev-cpp/cairomm
+
+# illogical-impulse-oneui4-icons-git/PKGBUILD
+# x11-themes/oneui4-icons # no ebuild available - provided by manual-install-helper.sh
+
+# illogical-impulse-portal/PKGBUILD
+sys-apps/xdg-desktop-portal
+kde-plasma/xdg-desktop-portal-kde
+sys-apps/xdg-desktop-portal-gtk
+gui-libs/xdg-desktop-portal-hyprland::guru
+
+# illogical-impulse-python/PKGBUILD
+llvm-core/clang
+dev-python/uv
+gui-libs/gtk
+gui-libs/libadwaita
+net-libs/libsoup
+dev-libs/libportal # +gtk
+dev-libs/gobject-introspection
+dev-python/libsass
+media-libs/opencv # +python
+
+# illogical-impulse-screencapture/PKGBUILD
+gui-apps/hyprshot::guru
+gui-apps/slurp
+gui-apps/swappy
+app-text/tesseract
+# https://packages.gentoo.org/useflags/l10n_en
+# Go to the link and l10n values to your USE var in your make.conf
+# For English that would be: l10n_en
+gui-apps/wf-recorder
+
+# illogical-impulse-toolkit/PKGBUILD
+kde-apps/kdialog
+dev-qt/qt5compat
+# Need https://github.com/novomesk/qt-avif-image-plugin
+dev-qt/qtbase
+dev-qt/qtdeclarative
+dev-qt/qtimageformats
+dev-qt/qtmultimedia
+dev-qt/qtpositioning
+dev-qt/qtquicktimeline
+dev-qt/qtsensors
+dev-qt/qtsvg
+dev-qt/qttools
+dev-qt/qttranslations
+dev-qt/qtvirtualkeyboard
+dev-qt/qtwayland
+kde-frameworks/syntax-highlighting
+sys-power/upower
+gui-apps/wtype::guru
+x11-misc/ydotool
+
+# illogical-impulse-widgets/PKGBUILD
+gui-apps/fuzzel::guru
+dev-libs/glib
+gui-apps/hypridle::guru
+gui-apps/hyprpicker::guru
+gnome-extra/nm-applet # supplies nm-connection-editor
+gui-apps/quickshell::guru
+# Need https://github.com/soimort/translate-shell
+gui-apps/wlogout
+
